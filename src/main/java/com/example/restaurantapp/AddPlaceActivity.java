@@ -44,7 +44,7 @@ public class AddPlaceActivity extends AppCompatActivity
         //longitudes = 0;
         databasehelper = new Databasehelper(this);
         restaurantname = findViewById(R.id.restaurantname);
-        Places.initialize(getApplicationContext(), "AIzaSyDxZ3ySUNcU2U5tjPwfYiMlVn7Akn2zAAk");
+        Places.initialize(getApplicationContext(), "");
         PlacesClient placesClient = Places.createClient(this);
         autofragment = (AutocompleteSupportFragment)getSupportFragmentManager().findFragmentById(R.id.autofragment);
         autofragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME,Place.Field.LAT_LNG));
