@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">restaurantapp</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="logo">logo</string>
+    <string name="show_all_restaurants">Show All Restaurants</string>
+    <string name="add_restaurant_location">Add Restaurant Location</string>
+    <string name="resimage">resimage</string>
+    <string name="show_location">Show location</string>
+    <string name="get_current_position">Get Current Position</string>
+    <string name="save">Save</string>
+    <string name="enter_restaurant_name">Enter restaurant name</string>
+</resources>
