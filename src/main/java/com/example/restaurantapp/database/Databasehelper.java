@@ -21,15 +21,8 @@ public class Databasehelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase)
     {
-        //String CREATE_TABLE = "CREATE TABLE " + Util.TABLE_NAME + " (" + Util.LOCATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Util.LOCATION_NAME + " TEXT, " + Util.LATITUDE + " TEXT, " + Util.LONGITUDE + " TEXT" + ")";
-        //sqLiteDatabase.execSQL(CREATE_TABLE);
-        String CREATE_TABLE = "CREATE TABLE " + Util.TABLE_NAME
-                + "("
-                + Util.LOCATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + Util.LOCATION_NAME + " TEXT, "
-                + Util.LATITUDE + " TEXT, "
-                + Util.LONGITUDE + " TEXT"
-                + ")";
+        String CREATE_TABLE = "CREATE TABLE " + Util.TABLE_NAME + " (" + Util.LOCATION_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + Util.LOCATION_NAME + " TEXT, " + Util.LATITUDE + " TEXT, " + Util.LONGITUDE + " TEXT" + ")";
+        sqLiteDatabase.execSQL(CREATE_TABLE);
 
         sqLiteDatabase.execSQL(CREATE_TABLE);
     }
