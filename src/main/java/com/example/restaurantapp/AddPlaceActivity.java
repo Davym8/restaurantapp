@@ -32,7 +32,7 @@ public class AddPlaceActivity extends AppCompatActivity
     LocationManager locationManager;
     LocationListener locationListener;
     AutocompleteSupportFragment autofragment;
-    Location savedlocation = new Location("Temp");
+    Location newlocation = new Location("Temp");
     //double latitudes, longitudes;
     EditText restaurantname;
     @Override
@@ -55,8 +55,8 @@ public class AddPlaceActivity extends AppCompatActivity
             {
                 //latitudes =place.getLatLng().latitude;
                 //longitudes = place.getLatLng().longitude;
-                savedlocation.setLatitude(place.getLatLng().latitude);
-                savedlocation.setLongitude(place.getLatLng().longitude);
+                newlocation.setLatitude(place.getLatLng().latitude);
+                newlocation.setLongitude(place.getLatLng().longitude);
             }
             @Override
             public void onError(@NonNull Status status)
@@ -91,9 +91,9 @@ public class AddPlaceActivity extends AppCompatActivity
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         }
 
-        savedlocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        newlocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-        autofragment.setText(savedlocation.getLatitude() + ", " + savedlocation.getLongitude());
+        autofragment.setText(newlocation.getLatitude() + ", " + newlocation.getLongitude());
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
@@ -116,11 +116,11 @@ public class AddPlaceActivity extends AppCompatActivity
     }
     public void showlocation(View view)
     {
-        if (savedlocation.getLatitude() != 0 && savedlocation.getLongitude() != 0)
+        if (newlocation.getLatitude() != 0 && newlocation.getLongitude() != 0)
         {
             Intent intent = new Intent(AddPlaceActivity.this, showmapActivity.class);
-            intent.putExtra("latt", savedlocation.getLatitude());
-            intent.putExtra("long", savedlocation.getLongitude());
+            intent.putExtra("latt", newlocation.getLatitude());
+            intent.putExtra("long", newlocation.getLongitude());
             startActivity(intent);
         }
         else
@@ -132,7 +132,7 @@ public class AddPlaceActivity extends AppCompatActivity
     {
         restaurantname.setText("");
         autofragment.setText("");
-        savedlocation = new Location("Temp");
+        newlocation = new Location("Temp");
     }
     public void saveplace(View view)
     {
@@ -140,7 +140,7 @@ public class AddPlaceActivity extends AppCompatActivity
         {
             Toast.makeText(AddPlaceActivity.this, "Enter location name", Toast.LENGTH_LONG).show();
         }
-        if (savedlocation.getLatitude() == 0 && savedlocation.getLongitude() == 0)
+        if (newlocation.getLatitude() == 0 && newlocation.getLongitude() == 0)
         {
             Toast.makeText(AddPlaceActivity.this, "Choose a location", Toast.LENGTH_LONG).show();
         }
@@ -148,8 +148,8 @@ public class AddPlaceActivity extends AppCompatActivity
         {
             com.example.restaurantapp.loctemplate.Locations location = new com.example.restaurantapp.loctemplate.Locations();
             location.setName(restaurantname.getText().toString());
-            location.setLatitude("" + savedlocation.getLatitude());
-            location.setLongitude("" + savedlocation.getLongitude());
+            location.setLatitude("" + newlocation.getLatitude());
+            location.setLongitude("" + newlocation.getLongitude());
 
             long result = databasehelper.addLocation(location);
 
